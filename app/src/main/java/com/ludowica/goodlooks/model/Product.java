@@ -3,18 +3,22 @@ package com.ludowica.goodlooks.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Product {
+
     @SerializedName("id")
     private int id;
     @SerializedName("name")
-    private int name;
+    private String name;
     @SerializedName("image")
-    private int image;
+    private String image;
     @SerializedName("price")
-    private int price;
+    private double price;
     @SerializedName("category")
     private int category;
 
-    public Product(int id, int name, int image, int price, int category) {
+    public Product() {
+    }
+
+    public Product(int id, String name, String image, double price, int category) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -30,27 +34,27 @@ public class Product {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

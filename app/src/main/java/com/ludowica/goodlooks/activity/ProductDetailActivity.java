@@ -39,7 +39,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     public void setData() {
         name.setText(product.getName());
-        price.setText(this.getString(product.getPrice()));
+        price.setText(String.valueOf(product.getPrice()));
         Glide.with(this).load(product.getImage()).into(image);
 
     }
