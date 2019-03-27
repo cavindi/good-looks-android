@@ -1,6 +1,7 @@
 package com.ludowica.goodlooks.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.ludowica.goodlooks.R;
+import com.ludowica.goodlooks.activity.ProductDetailActivity;
 import com.ludowica.goodlooks.model.Product;
 
 import java.util.List;
@@ -55,13 +58,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         holder.price.setText(String.valueOf(product.getPrice()));
         Glide.with(context).load(product.getImage()).into(holder.image);
 
-/*        holder.cardView.setOnClickListener(view -> {
+        holder.cardView.setOnClickListener(view -> {
             Intent intent = new Intent(context, ProductDetailActivity.class);
             Gson gson = new Gson();
             String productJson = gson.toJson(product);
             intent.putExtra("product", productJson);
             context.startActivity(intent);
-        });*/
+        });
     }
 
     @Override

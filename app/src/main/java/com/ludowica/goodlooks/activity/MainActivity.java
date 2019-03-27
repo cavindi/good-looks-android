@@ -2,7 +2,7 @@ package com.ludowica.goodlooks.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
@@ -38,9 +38,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
         recyclerView = findViewById(R.id.recycle_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(mLayoutManager);
+
         productList = new ArrayList<>();
-        productAdapter = new ProductAdapter(getApplicationContext(), productList);
+        productAdapter = new ProductAdapter(this, productList);
         recyclerView.setAdapter(productAdapter);
 
         retrieveProducts();
