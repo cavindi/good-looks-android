@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import com.google.gson.Gson;
 import com.ludowica.goodlooks.R;
 import com.ludowica.goodlooks.activity.ProductDetailActivity;
 import com.ludowica.goodlooks.model.Product;
+import com.ludowica.goodlooks.services.CartService;
 
 import java.util.List;
 
@@ -27,6 +29,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         public TextView name, price;
         public ImageView image;
         public CardView cardView;
+        private Button btnAddToCart;
 
         public MyViewHolder(View view) {
             super(view);
@@ -35,6 +38,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             price = view.findViewById(R.id.lbl_price);
             image = view.findViewById(R.id.image);
             cardView = view.findViewById(R.id.card_product);
+
+            btnAddToCart = view.findViewById(R.id.add_to_cart);
         }
     }
 
@@ -65,10 +70,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             intent.putExtra("product", productJson);
             context.startActivity(intent);
         });
+
+        holder.btnAddToCart.setOnClickListener(view -> {
+            addToCart(product);
+        });
     }
 
     @Override
     public int getItemCount() {
         return productList.size();
+    }
+
+    private void addToCart(Product product) {
+
+        CartService cartService = new CartService();
+        cartService.addOrUpdate(context, product.getId(), 1);
     }
 }
