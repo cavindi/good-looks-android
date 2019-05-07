@@ -1,9 +1,13 @@
 package com.ludowica.goodlooks.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.ludowica.goodlooks.R;
 import com.ludowica.goodlooks.adapter.TabAdapter;
@@ -26,6 +30,27 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         init();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_cart:
+                Intent intent = new Intent(this, CartActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void init() {

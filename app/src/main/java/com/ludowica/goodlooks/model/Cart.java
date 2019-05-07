@@ -12,10 +12,7 @@ public class Cart {
     @SerializedName("userId")
     private int userId;
 
-    @SerializedName("createdDate")
-    private String createdDate;
-
-    @SerializedName("shoppingCartProducts")
+    @SerializedName("cartProducts")
     private List<CartProduct> cartProducts;
 
     public int getId() {
@@ -32,14 +29,6 @@ public class Cart {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public String getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
     }
 
     public List<CartProduct> getCartProducts() {

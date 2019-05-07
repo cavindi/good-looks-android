@@ -19,8 +19,8 @@ public interface ICartService {
     @POST("carts")
     Call<CartProduct> addOrUpdate(@Body ShoppingCartForm shoppingCartForm);
 
-    @POST("carts/create")
-    Call<Cart> createCart(@Body int userId);
+    @GET("carts/fetch/{userId}")
+    Call<Cart> fetchCart(@Path("userId") int userId);
 
     @HTTP(method = "DELETE", path = "carts", hasBody = true)
     Call<CartProduct> deleteCartItem(@Body ShoppingCartForm shoppingCartForm);

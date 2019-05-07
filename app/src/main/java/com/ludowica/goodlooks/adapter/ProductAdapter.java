@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +22,7 @@ import com.ludowica.goodlooks.services.CartService;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
+
     private Context context;
     private List<Product> productList;
 
@@ -29,7 +30,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         public TextView name, price;
         public ImageView image;
         public CardView cardView;
-        private Button btnAddToCart;
+        private ImageButton btnAddToCart;
 
         public MyViewHolder(View view) {
             super(view);

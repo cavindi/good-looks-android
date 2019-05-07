@@ -72,12 +72,11 @@
                         <!--android:layout_height="@dimen/ic_add_cart_width"-->
                         <!--android:src="@drawable/icon_remove" />-->
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/add_to_cart"
                         android:layout_width="@dimen/ic_add_cart_width"
                         android:layout_height="@dimen/ic_add_cart_width"
-                        android:background="@drawable/icon_add"
-                        android:src="@drawable/icon_add" />
+                        android:background="@drawable/icon_add" />
 
                 </LinearLayout>
             </RelativeLayout>
