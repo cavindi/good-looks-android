@@ -7,14 +7,17 @@ public class User {
     @SerializedName("userId")
     private int userId;
 
-    @SerializedName("fName")
-    private String fName;
+    @SerializedName("name")
+    private String name;
 
     @SerializedName("username")
     private String username;
 
     @SerializedName("password")
     private String password;
+
+    @SerializedName("address")
+    private String address;
 
     public int getUserId() {
         return userId;
@@ -24,12 +27,20 @@ public class User {
         this.userId = userId;
     }
 
-    public String getfName() {
-        return fName;
+    public String getName() {
+        return name;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getUsername() {

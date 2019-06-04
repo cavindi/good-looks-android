@@ -11,6 +11,6 @@ public interface AuthService {
     @POST("auth")
     Call<User> signIn(@Body User user);
 
-//    @POST("auth/signup")
-//    Call<User> signUp(@Body User user);
+    @POST("auth/register")
+    Call<User> register(@Body User user);
 }
