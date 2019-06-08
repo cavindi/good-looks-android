@@ -11,8 +11,6 @@ import com.ludowica.goodlooks.R;
 import com.ludowica.goodlooks.model.User;
 import com.ludowica.goodlooks.services.ApiClient;
 import com.ludowica.goodlooks.services.AuthService;
-import com.ludowica.goodlooks.services.CartService;
-import com.ludowica.goodlooks.services.SharedPreferencesManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,7 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private EditText name;
-    private EditText address;
+    private EditText email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +29,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         username = findViewById(R.id.input_username);
-        password = findViewById(R.id.input_name);
-        name = findViewById(R.id.input_password);
-        address = findViewById(R.id.input_address);
+        name = findViewById(R.id.input_name);
+        password = findViewById(R.id.input_password);
+        email = findViewById(R.id.input_address);
     }
 
     public void txtSignInClicked(View view) {
@@ -45,14 +43,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (!username.getText().toString().isEmpty() &&
                 !password.getText().toString().isEmpty() &&
-                !address.getText().toString().isEmpty() &&
+                !email.getText().toString().isEmpty() &&
                 !name.getText().toString().isEmpty()
         ) {
 
             User user = new User();
             user.setUsername(username.getText().toString());
             user.setPassword(password.getText().toString());
-            user.setAddress(address.getText().toString());
+            user.setEmail(email.getText().toString());
             user.setName(name.getText().toString());
 
             AuthService authService = ApiClient.getClient().create(AuthService.class);
@@ -66,10 +64,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(), "Register Successful!", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(intent);
-                    }
-                    else{
+                    } else {
                         Toast.makeText(getApplicationContext(), "Error!", Toast.LENGTH_SHORT).show();
                     }
                 }

@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_cart, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
 
@@ -44,6 +44,11 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.action_cart:
                 Intent intent = new Intent(this, CartActivity.class);
                 startActivity(intent);
+                return true;
+
+            case R.id.action_search:
+                Intent searchIntent = new Intent(this, FilterActivity.class);
+                startActivity(searchIntent);
                 return true;
             default:
                 break;

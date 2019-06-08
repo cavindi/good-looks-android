@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,12 +21,14 @@ import com.ludowica.goodlooks.activity.ProductDetailActivity;
 import com.ludowica.goodlooks.model.Product;
 import com.ludowica.goodlooks.services.CartService;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> implements Filterable {
 
     private Context context;
     private List<Product> productList;
+    private List<Product> productListFiltered;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, price;
@@ -47,6 +51,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     public ProductAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
+        this.productListFiltered = productList;
     }
 
     @NonNull
@@ -59,7 +64,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
-        final Product product = productList.get(position);
+        final Product product = productListFiltered.get(position);
         holder.name.setText(product.getName());
         holder.price.setText(String.valueOf(product.getPrice()));
         Glide.with(context).load(product.getImage()).into(holder.image);
@@ -79,7 +84,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return productListFiltered.size();
     }
 
     private void addToCart(Product product) {
@@ -87,4 +92,41 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         CartService cartService = new CartService();
         cartService.addOrUpdate(context, product.getId(), 1);
     }
+
+    @Override
+    public Filter getFilter() {
+
+        return new Filter() {
+
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+
+                if (charString.isEmpty()) {
+                    productListFiltered = productList;
+                } else {
+                    List<Product> filteredList = new ArrayList<>();
+                    for (Product row : productList) {
+
+                        if (row.getName().toLowerCase().contains(charString.toLowerCase()) ||
+                                charString.contains(String.valueOf(row.getCategory()))) {
+                            filteredList.add(row);
+                        }
+                    }
+                    productListFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = productListFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                productListFiltered = (ArrayList<Product>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
 }

@@ -2,6 +2,7 @@ package com.ludowica.goodlooks.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -35,7 +36,7 @@ public class CategoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
         category_list = view.findViewById(R.id.category_list);
-        category_list.setLayoutManager(new LinearLayoutManager(getContext()));
+        category_list.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         categoryList = new ArrayList<>();
         categoryAdapter = new CategoryAdapter(getContext(), categoryList);

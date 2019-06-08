@@ -9,11 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ludowica.goodlooks.R;
+import com.ludowica.goodlooks.activity.FilterActivity;
 import com.ludowica.goodlooks.activity.ProductDetailActivity;
 import com.ludowica.goodlooks.model.Category;
 
@@ -43,11 +45,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
         Glide.with(context).load(category.getImage()).into(myViewHolder.image);
 
-        myViewHolder.cardView.setOnClickListener(view -> {
-            Intent intent = new Intent(context, ProductDetailActivity.class); //create activity
-            Gson gson = new Gson();
-            String productJson = gson.toJson(category);
-            intent.putExtra("product", productJson);
+        myViewHolder.card.setOnClickListener(view -> {
+            Intent intent = new Intent(context, FilterActivity.class); //create activity
+            intent.putExtra("key", String.valueOf(category.getId()));
             context.startActivity(intent);
         });
     }
@@ -60,14 +60,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
         public ImageView image;
-        public CardView cardView;
+        public RelativeLayout card;
 
         public MyViewHolder(View view) {
             super(view);
 
             name = view.findViewById(R.id.name);
             image = view.findViewById(R.id.image);
-            cardView = view.findViewById(R.id.card_product);
+            card = view.findViewById(R.id.card);
         }
     }
 }

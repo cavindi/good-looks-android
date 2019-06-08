@@ -1,15 +1,24 @@
 package com.ludowica.goodlooks.fragment;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ludowica.goodlooks.R;
+import com.ludowica.goodlooks.activity.FilterActivity;
+import com.ludowica.goodlooks.activity.RegisterActivity;
 import com.ludowica.goodlooks.adapter.ProductAdapter;
 import com.ludowica.goodlooks.model.Product;
 import com.ludowica.goodlooks.services.ApiClient;
@@ -29,6 +38,12 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
 
     private static final String TAG = HomeFragment.class.getSimpleName();
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -69,6 +84,5 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
 
 }
