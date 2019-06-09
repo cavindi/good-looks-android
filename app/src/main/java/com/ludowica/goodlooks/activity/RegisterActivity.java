@@ -35,18 +35,16 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void txtSignInClicked(View view) {
-        Intent intent = new Intent(this, RegisterActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
     public void btnRegisterClicked(View view) {
-
         if (!username.getText().toString().isEmpty() &&
                 !password.getText().toString().isEmpty() &&
                 !email.getText().toString().isEmpty() &&
                 !name.getText().toString().isEmpty()
         ) {
-
             User user = new User();
             user.setUsername(username.getText().toString());
             user.setPassword(password.getText().toString());
@@ -61,9 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onResponse(Call<User> call, Response<User> response) {
 
                     if (response.isSuccessful()) {
-
-                        Toast.makeText(getApplicationContext(), "Register Successful!", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(getApplicationContext(), "Customer registered successfully!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(intent);
                     } else {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="#D16E6E">
 
 
     <Button
@@ -14,11 +14,13 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/colorGreen"
+        android:background="#DB4D4D"
         android:onClick="btnLoginClicked"
-        android:text="Login"
+        android:text="LOGIN"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,9 +34,10 @@
         android:layout_marginTop="116dp"
         android:layout_marginEnd="8dp"
         android:text="Good Looks"
-        android:textColor="@color/colorGreen"
-        android:textSize="36sp"
-        android:textStyle="bold"
+        android:textColor="#FCFCFC"
+        android:textSize="50sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="cursive"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,12 +53,13 @@
         android:layout_marginBottom="8dp"
         android:clickable="true"
         android:onClick="txtSignupClicked"
-        android:text="Signup"
+        android:text="No account yet? Create one"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <EditText
         android:id="@+id/input_password"

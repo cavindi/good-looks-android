@@ -43,7 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         if (!username.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
 
             User user = new User();
-            user.setUsername(username.getText().toString());user.setPassword(password.getText().toString());
+            user.setUsername(username.getText().toString());
+            user.setPassword(password.getText().toString());
 
             AuthService authService = ApiClient.getClientForToken().create(AuthService.class);
             Call<JwtResponse> call = authService.signIn(user);
@@ -55,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         setValues(response.body());
                     } else {
-                        Toast.makeText(getApplicationContext(), "Credentials Wrong!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Incorrect credentials! Check again...", Toast.LENGTH_SHORT).show();
                     }
                 }
 
