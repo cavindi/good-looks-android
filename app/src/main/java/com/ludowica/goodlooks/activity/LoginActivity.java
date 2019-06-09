@@ -66,6 +66,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
+        else if(username.getText().toString().isEmpty() && password.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Empty fields!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void setValues(JwtResponse jwtResponse) {

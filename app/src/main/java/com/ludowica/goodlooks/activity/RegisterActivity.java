@@ -62,7 +62,8 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Customer registered successfully!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(intent);
-                    } else {
+                    }
+                    else {
                         Toast.makeText(getApplicationContext(), "Error!", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -72,6 +73,21 @@ public class RegisterActivity extends AppCompatActivity {
 
                 }
             });
+        }
+        else if(username.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please enter username!", Toast.LENGTH_SHORT).show();
+        }
+        else if(password.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_SHORT).show();
+        }
+        else if(email.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please enter email!", Toast.LENGTH_SHORT).show();
+        }
+        else if(name.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please enter name!", Toast.LENGTH_SHORT).show();
+        }
+        else if(username.getText().toString().isEmpty() && password.getText().toString().isEmpty() && email.getText().toString().isEmpty() && name.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Empty fields!", Toast.LENGTH_SHORT).show();
         }
     }
 }

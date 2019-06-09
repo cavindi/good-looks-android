@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">GoodLooks</string>
 
-    <string name="price">Rs. %.2f</string>
-    <string name="price_string">Rs. %s</string>
+    <string name="price">£. %.2f</string>
+    <string name="price_string">£. %s</string>
     <string name="empty_cart">No Products in Cart</string>
     <string name="empty_card_no">Card No empty</string>
     <string name="success_checkout">Checkout Successful</string>

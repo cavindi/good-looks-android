@@ -17,6 +17,20 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="right|center_horizontal|end"
+                android:layout_margin="1dp"
+                android:fadingEdge="horizontal|vertical"
+                android:fadingEdgeLength="20dp"
+                android:foregroundGravity="right"
+                android:padding="1dp"
+                android:requiresFadingEdge="horizontal|vertical"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@tools:sample/avatars" />
+
             <LinearLayout
                 android:layout_width="295dp"
                 android:layout_height="match_parent"
@@ -114,20 +128,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="right|center_horizontal|end"
-                android:layout_margin="1dp"
-                android:fadingEdge="horizontal|vertical"
-                android:fadingEdgeLength="20dp"
-                android:foregroundGravity="right"
-                android:padding="1dp"
-                android:requiresFadingEdge="horizontal|vertical"
-                android:scaleType="centerCrop"
-                tools:srcCompat="@tools:sample/avatars" />
 
         </LinearLayout>
 
